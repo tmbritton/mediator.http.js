@@ -85,7 +85,7 @@
       if (options && options.data) {
         post_data = http.serializeKeyValuePairs(options.data);
       }
-      http.send(post_data);
+      http.request.send(data);
     },
 
     /**
@@ -184,14 +184,7 @@
           http.request.setRequestHeader(header, headers[header]);
         }
       } 
-    },
-
-    /**
-     * Send HTTP request.
-     */
-    send: function(data) {
-      http.request.send(data);
-    },
+    }
   };
 
   return {
