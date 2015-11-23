@@ -8,8 +8,8 @@
     });
   } else if (typeof exports !== 'undefined') {
     // Node/CommonJS
-    mediator = require('mediator');
-    exports.mediator.http = component(mediator);
+    var mediator = require('mediator.js').mediator;
+    exports.mediator_http = component(mediator);
   } else {
     // Browser global
     global.mediator.http = component(global.mediator);
@@ -85,7 +85,7 @@
       if (options && options.data) {
         post_data = http.serializeKeyValuePairs(options.data);
       }
-      http.request.send(data);
+      http.request.send(post_data);
     },
 
     /**
