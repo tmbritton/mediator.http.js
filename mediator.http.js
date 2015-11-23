@@ -1,20 +1,6 @@
-'use strict';
-(function(global, component) {
+var mediator = require('mediator.js');
 
-  if (typeof define === 'function' && define.amd) {
-    // AMD/RequireJS
-    define('mediator_http', ['mediator'], function(mediator) {
-      return component(mediator);
-    });
-  } else if (typeof exports !== 'undefined') {
-    // Node/CommonJS
-    var mediator = require('mediator.js').mediator;
-    exports.mediator_http = component(mediator);
-  } else {
-    // Browser global
-    global.mediator.http = component(global.mediator);
-  }  
-})(this, function(mediator){ 
+module.exports = (function(){
 
   var http = {
 
@@ -194,5 +180,4 @@
     patch: http.patch,
     delete: http.delete
   };
-
-});
+})();
