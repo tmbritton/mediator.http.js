@@ -1,0 +1,28 @@
+{
+  "name": "mediator.http.js",
+  "version": "0.0.1",
+  "description": "XMLHttpRequest wrapper module for use with Mediator.js.",
+  "main": "mediator.http.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tmbritton/mediator.http.js.git"
+  },
+  "keywords": [
+    "http",
+    "ajax",
+    "pubsub",
+    "mediator"
+  ],
+  "author": "Thomas Britton <britton.tm@gmail.com> (http://tmbritton.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tmbritton/mediator.http.js/issues"
+  },
+  "homepage": "https://github.com/tmbritton/mediator.http.js",
+  "dependencies": {
+    "mediator.js": "^1.0.0"
+  }
+}
