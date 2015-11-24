@@ -1,6 +1,6 @@
 {
   "name": "mediator.http.js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "XMLHttpRequest wrapper module for use with Mediator.js.",
   "main": "mediator.http.js",
   "scripts": {
