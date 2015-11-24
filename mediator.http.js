@@ -5,6 +5,7 @@ module.exports = (function(){
   var http = {
 
     request: new XMLHttpRequest(),
+    key: '',
 
     /**
      * Add event listeners to the XMLHttpRequest object.
@@ -12,7 +13,7 @@ module.exports = (function(){
     addStatusListeners: function() {
       http.request.addEventListener('progress', function(event) {
         if (event.lengthComputable) {
-          mediator.publish('httpUpdate',  Math.round((event.loaded / event.total) * 100));
+          mediator.publish(http.key + '-httpUpdate',  Math.round((event.loaded / event.total) * 100));
         }
       });
 
@@ -21,11 +22,11 @@ module.exports = (function(){
       });
 
       http.request.addEventListener('error', function(event){
-        mediator.publish('httpError', event);
+        mediator.publish(http.key + '-httpError', event);
       });
 
       http.request.addEventListener('abort', function(event){
-        mediator.publish('httpAbort', event);
+        mediator.publish(http.key + '-httpAbort', event);
       });
     },
 
@@ -84,7 +85,8 @@ module.exports = (function(){
      *   username - {string} - username for HTTP authentication.
      *   password - {string} - password for HTTP authentication.
      */
-    delete: function(url, options) {
+    delete: function(url, key, options) {
+      http.key = key;
       http.buildRequest(url, 'DELETE', options);
     },
 
@@ -98,7 +100,8 @@ module.exports = (function(){
      *   username - {string} - username for HTTP authentication.
      *   password - {string} - password for HTTP authentication.
      */
-    get: function(url, options) {
+    get: function(url, key, options) {
+      http.key = key;
       http.buildRequest(url, 'GET', options);
     },
 
@@ -112,7 +115,8 @@ module.exports = (function(){
      *   username - {string} - username for HTTP authentication.
      *   password - {string} - password for HTTP authentication.
      */
-    patch: function(url, options) {
+    patch: function(url, key, options) {
+      http.key = key;
       http.buildRequest(url, 'PATCH', options);
     },
 
@@ -126,7 +130,8 @@ module.exports = (function(){
      *   username - {string} - username for HTTP authentication.
      *   password - {string} - password for HTTP authentication.
      */
-    post: function(url, options) {
+    post: function(url, key, options) {
+      http.key = key;
       http.buildRequest(url, 'POST', options);
     },
 
@@ -140,7 +145,8 @@ module.exports = (function(){
      *   username - {string} - username for HTTP authentication.
      *   password - {string} - password for HTTP authentication.
      */
-    put: function(url, options) {
+    put: function(url, key, options) {
+      http.key = key;
       http.buildRequest(url, 'PUT', options);
     },
 
@@ -157,7 +163,7 @@ module.exports = (function(){
       if (JSON.parse(event.target.response)) {
         response.data = JSON.parse(event.target.response);
       }
-      mediator.publish('httpSuccess', response);
+      mediator.publish(http.key + '-httpSuccess', response);
     },
 
     /**
